@@ -1,0 +1,12 @@
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\bin\Debug\net6.0\Business.Interfaces.deps.json
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\bin\Debug\net6.0\Business.Interfaces.dll
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\bin\Debug\net6.0\Business.Interfaces.pdb
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.csproj.AssemblyReference.cache
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.AssemblyInfoInputs.cache
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.AssemblyInfo.cs
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.dll
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\refint\Business.Interfaces.dll
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\Business.Interfaces.pdb
+C:\Users\Jacob\source\repos\Weeva\Business.Interfaces\obj\Debug\net6.0\ref\Business.Interfaces.dll

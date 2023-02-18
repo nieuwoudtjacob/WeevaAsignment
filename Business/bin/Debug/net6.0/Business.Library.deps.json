@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Business.Library/1.0.0": {
+        "dependencies": {
+          "Business.Interfaces": "1.0.0"
+        },
+        "runtime": {
+          "Business.Library.dll": {}
+        }
+      },
+      "Business.Interfaces/1.0.0": {
+        "runtime": {
+          "Business.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Business.Library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Business.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

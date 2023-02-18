@@ -1,0 +1,15 @@
+C:\Users\Jacob\source\repos\Weeva\Business\bin\Debug\net6.0\Business.Library.deps.json
+C:\Users\Jacob\source\repos\Weeva\Business\bin\Debug\net6.0\Business.Library.dll
+C:\Users\Jacob\source\repos\Weeva\Business\bin\Debug\net6.0\Business.Library.pdb
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.csproj.AssemblyReference.cache
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.AssemblyInfoInputs.cache
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.AssemblyInfo.cs
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.csproj.CoreCompileInputs.cache
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.csproj.CopyComplete
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.dll
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\refint\Business.Library.dll
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\Business.Library.pdb
+C:\Users\Jacob\source\repos\Weeva\Business\obj\Debug\net6.0\ref\Business.Library.dll
+C:\Users\Jacob\source\repos\Weeva\Business\bin\Debug\net6.0\Business.Interfaces.dll
+C:\Users\Jacob\source\repos\Weeva\Business\bin\Debug\net6.0\Business.Interfaces.pdb

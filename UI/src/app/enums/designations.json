@@ -1,0 +1,20 @@
+{
+    "designations_list": [
+        {
+            "id": 1,
+            "name": "CEO"
+        },
+        {
+            "id": 2,
+            "name": "Support"
+        },
+        {
+            "id": 3,
+            "name": "Developer"
+        },
+        {
+            "id": 4,
+            "name": "Other"
+        }
+    ]
+}

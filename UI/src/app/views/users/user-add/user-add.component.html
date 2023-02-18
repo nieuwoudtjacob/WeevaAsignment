@@ -1,0 +1,116 @@
+<div class="card" style="margin: 15px;">
+    <div class="card-body general_faq accordion_exp">
+        <form class="needs-validation" novalidate (ngSubmit)="submitUser()" [formGroup]="userFormGroup" class="row g-3">
+
+            <div class="col-md-4">
+                <label for="id_user_firstName" class="form-label">First Name</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="user_firstName" formControlName="user_firstName"
+                        [(ngModel)]="user.firstName"
+                        [ngClass]=" (user_firstName.touched||user_firstName.dirty) && user_firstName.errors ? 'is-invalid':'' ||   ((user_firstName.touched || user_firstName.dirty) &&  !user_firstName.invalid) ? 'is-valid' : '' "
+                        required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Value.
+                    </div>
+                    <div class="valid-feedback">
+                        Valid.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="id_user_lastName" class="form-label">Last Name</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="user_lastName" formControlName="user_lastName"
+                        [(ngModel)]="user.lastName"
+                        [ngClass]=" (user_lastName.touched||user_lastName.dirty) && user_lastName.errors ? 'is-invalid':'' ||   ((user_lastName.touched || user_lastName.dirty) &&  !user_lastName.invalid) ? 'is-valid' : '' "
+                        required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Value.
+                    </div>
+                    <div class="valid-feedback">
+                        Valid.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="id_user_email" class="form-label">Email</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="user_email" formControlName="user_email"
+                        [(ngModel)]="user.email"
+                        [ngClass]=" (user_email.touched||user_email.dirty) && user_email.errors ? 'is-invalid':'' ||   ((user_email.touched || user_email.dirty) &&  !user_email.invalid) ? 'is-valid' : '' "
+                        required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Value.
+                    </div>
+                    <div class="valid-feedback">
+                        Valid.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="id_user_phoneNumber" class="form-label">Phone Number</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="user_phoneNumber" formControlName="user_phoneNumber"
+                        [(ngModel)]="user.phoneNumber"
+                        [ngClass]=" (user_phoneNumber.touched||user_phoneNumber.dirty) && user_phoneNumber.errors ? 'is-invalid':'' ||   ((user_phoneNumber.touched || user_phoneNumber.dirty) &&  !user_phoneNumber.invalid) ? 'is-valid' : '' "
+                        required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Value.
+                    </div>
+                    <div class="valid-feedback">
+                        Valid.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <label for="id_user_designation" class="form-label">Designation</label>
+                <div class="input-group has-validation">
+                    <select class="form-select" id="user_designation" formControlName="user_designation"
+                        [(ngModel)]="user.designation"
+                        [ngClass]=" (user_designation.touched||user_designation.dirty) && user_designation.errors ? 'is-invalid':'' ||   ((user_designation.touched || user_designation.dirty) &&  !user_designation.invalid) ? 'is-valid' : '' "
+                        required>
+                        <option></option>
+                        <option *ngFor="let value of designations.designations_list"
+                            [selected]="value.name === user.designation">
+                            {{value.name}}</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a value.
+                    </div>
+                    <div class="valid-feedback">
+                        Valid.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <label for="id_user_password" class="form-label">Password</label>
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="user_password" formControlName="user_password"
+                        [(ngModel)]="user.password"
+                        [ngClass]=" (user_password.touched||user_password.dirty) && user_password.errors ? 'is-invalid':'' ||   ((user_password.touched || user_password.dirty) &&  !user_password.invalid) ? 'is-valid' : '' "
+                        required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Value.
+                    </div>
+                    <div class="valid-feedback">
+                        Valid.
+                    </div>
+                </div>
+            </div>
+
+            <button [disabled]="userFormGroup.invalid" *ngIf="!isSubmitting" type="submit"
+                class="btn btn-primary w-md">Save</button>
+            <button (click)="cancell()" type="button" class="btn btn-danger w-md">Cancel</button>
+            <button *ngIf="isSubmitting" class="btn btn-primary" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Saving...
+            </button>
+        </form><!-- end form -->
+    </div><!-- end card body -->
+</div>

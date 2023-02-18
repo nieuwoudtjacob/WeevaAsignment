@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-sm-12 login-left vertical-center">
+            <div class="brand">
+                <div class="SloganText">
+                    User <br>Management <br>System
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12 login-right vertical-center">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col align-self-start">
+                        <div class="login-form">
+
+                            <div *ngIf="isValid == false;" class="alert alert-danger alert-dismissible fade show"
+                                role="alert">
+                                <strong>Oops!</strong> The user name or password is incorrect.
+                            </div>
+
+                            <form>
+                                <div class="logo">
+                                    <img class="logo" src="../assets/images/fire.png" />
+                                </div>
+                                <form class="needs-validation" novalidate [formGroup]="userFormGroup" class="row g-3">
+                                    <div class="form-group">
+                                        <label for="id_user_email" class="form-label">User Name</label>
+                                        <div class="input-group has-validation">
+                                            <input type="text" class="form-control" id="user_email"
+                                                formControlName="user_email" [(ngModel)]="user.email"
+                                                [ngClass]=" (user_email.touched||user_email.dirty) && user_email.errors ? 'is-invalid':'' ||   ((user_email.touched || user_email.dirty) &&  !user_email.invalid) ? 'is-valid' : '' "
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid username.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Valid.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="id_user_password" class="form-label">Password</label>
+                                        <div class="input-group has-validation">
+                                            <input type="password" class="form-control" id="user_password"
+                                                formControlName="user_password" [(ngModel)]="user.password"
+                                                [ngClass]=" (user_password.touched||user_password.dirty) && user_password.errors ? 'is-invalid':'' ||   ((user_password.touched || user_password.dirty) &&  !user_password.invalid) ? 'is-valid' : '' "
+                                                required>
+                                            <div class="invalid-feedback">
+                                                Password cannot be empty.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Valid.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                                <br>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="login()">LOG
+                                    IN</button>
+                                <div class="agree">
+                                    By proceeding to use our system, you agree to our <br><a href="#">Terms &
+                                        Conditions</a> and <a href="#">Privacy Policy</a>.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="square s1"></div>
+    <div class="square s2"></div>
+    <div class="square s3"></div>
+</div>

@@ -1,0 +1,144 @@
+<div *ngIf="!loading">
+
+    <div class="row mb-md-2">
+        <div class="col-sm-12 col-md-6">
+            <!-- Search -->
+            <div id="tickets-table_filter" class="dataTables_filter">
+                <label class="d-inline-flex align-items-center">Search:
+                    <input type="text" name="searchTerm" class="form-control form-control-sm ms-2"
+                        aria-controls="tickets-table" [(ngModel)]="service.globalSearchTerm">
+                </label>
+            </div>
+            <!-- End search -->
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="dropdown text-md-end float-right" ngbDropdown>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+                    <i class="mdi mdi-format-list-bulleted"></i> <i class="mdi mdi-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" ngbDropdownMenu>
+                    <ng-container *ngFor="let col of tableColumns; let headerIdx=index">
+                        <div class="column-show-hide-dropdown-item">
+                            <input class="form-check-input dropdown-item-check" type="checkbox"
+                                id="column_check_{{headerIdx}}" [(ngModel)]="columnVisibilityList[headerIdx]"
+                                (ngModelChange)="onVisibilityChange($event, headerIdx)">
+                            <label class="form-check-label" for="column_check_{{headerIdx}}">
+                                {{col.title}}
+                            </label>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="responsive">
+            <table class="table table-bordered dt-responsive nowrap w-100 datatables common-table table-striped ">
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let col of tableColumns; let headerIdx=index">
+                            <th *ngIf="col.sortable == false" nowrap resizable class="no-sort-header" draggable="true"
+                                [ngClass]="{'d-none': !columnVisibilityList[headerIdx]}"
+                                (dragstart)="dragStartColumn(headerIdx)" (dragover)="allowDrop($event)"
+                                (drop)="dropColumn(headerIdx)">{{col.title}}
+                            </th>
+                            <th sortable="name" *ngIf="col.sortable == true" nowrap resizable
+                                (click)="sort(col.column_val)"
+                                [ngClass]="{'asc': isDesc && column == col.column_val, 'desc': !isDesc && column == col.column_val}"
+                                [ngClass]="{'d-none': !columnVisibilityList[headerIdx]}" draggable="true"
+                                (dragstart)="dragStartColumn(headerIdx)" (dragover)="allowDrop($event)"
+                                (drop)="dropColumn(headerIdx)">{{col.title}}
+                            </th>
+                        </ng-container>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let table of tables$ | async; let rowIdx=index">
+                        <ng-container *ngFor="let item of table; let colIdx = index">
+                            <td style="text-align: center !important;" *ngIf="item.type === ColumnType.Action"
+                                class="action-col" [ngClass]="{'d-none': !columnVisibilityList[colIdx]}">
+                                <a [routerLink]="'/' + editLink"
+                                    [queryParams]="{record: getFormattedDataEntry(item.cell_val) | json}"><img
+                                        src="assets/images/edit.png" alt=""></a>
+                            </td>
+
+                            <td *ngIf="item.type === ColumnType.String || item.type === ColumnType.Number"
+                                [ngClass]="{'d-none': !columnVisibilityList[colIdx]}">
+                                <ngb-highlight [result]="item.cell_val" [term]="service.globalSearchTerm">
+                                </ngb-highlight>
+                            </td>
+
+                            <td *ngIf="item.type === ColumnType.Gallery" class="action-col"
+                                [ngClass]="{'d-none': !columnVisibilityList[colIdx]}">
+                                <img src="assets/images/upload.png" alt="" (click)="openModal(content)">
+                                <ng-template #content role="image" let-modal>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel">Upload Files</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" (click)="modal.close('Close click')">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="card-body">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                                            (click)="modal.close('Close click')">Close</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                            (click)="modal.close('Close click')">Send Files</button>
+                                    </div>
+                                </ng-template>
+                                <img src="assets/images/edit.png" alt="" (click)="openModal(slider_content)">
+                                <ng-template #slider_content role="document" let-modal>
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="myModalLabel">Image Gallery</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close" (click)="modal.close('Close click')">
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal"
+                                            (click)="modal.close('Close click')">Close</button>
+                                    </div>
+                                </ng-template>
+                                <img src="assets/images/delete.png" alt="">
+                            </td>
+                            <td *ngIf="item.type === ColumnType.Image"
+                                [ngClass]="{'d-none': !columnVisibilityList[colIdx]}">
+                                <img class="user-avatar" src="{{item.cell_val}}">
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row justify-content-md-between align-items-md-center mt-2">
+            <div class="dataTables_length" id="tickets-table_length"><label
+                    class="d-inline-flex align-items-center">Show
+                    <select name="tickets-table_length" aria-controls="tickets-table" name="pageSize"
+                        [(ngModel)]="service.pageSize" class="form-control form-control-sm mx-2">
+                        <option [ngValue]="10">10</option>
+                        <option [ngValue]="25">25</option>
+                        <option [ngValue]="50">50</option>
+                        <option [ngValue]="100">100</option>
+                    </select> entries</label></div>
+            <div class="col-sm-12 col-md-5">
+                <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
+                    Showing {{service.startIndex}} to {{service.endIndex}} of {{service.totalRecords}} entries
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div *ngIf="service.totalRecords > service.pageSize" class="col-sm-12 col-md-5">
+                <div class="text-md-right float-md-end pagination-rounded">
+                    <ngb-pagination [collectionSize]="(total$ | async)!" [(page)]="service.page"
+                        [pageSize]="service.pageSize" [maxSize]="5" [boundaryLinks]="true">
+                    </ngb-pagination>
+                </div>
+            </div>
+            <!-- End Pagination -->
+        </div>
+    </div>
